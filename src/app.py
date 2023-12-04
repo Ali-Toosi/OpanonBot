@@ -39,6 +39,7 @@ def bot_webhook(bot_token):
     if bot_token == str(app_config.BOT_TOKEN_EN).replace(":", ""):
         bot.lang = "en"
         bot.username = "OpanonBot"
+        bot.token = app_config.BOT_TOKEN_EN
     elif bot_token == str(app_config.BOT_TOKEN_FA).replace(":", ""):
         bot.lang = "fa"
         bot.username = "NashenasBot"
