@@ -13,7 +13,7 @@ STAGE = os.environ["STAGE"]
 STAGE_VERSION: int = int(os.environ["STAGE_VERSION"])
 
 # Different tables for different stages but not for different versions
-DYNAMO_TABLES_PREFIX = f"opanonbot_{STAGE}_"
+DYNAMO_TABLES_PREFIX = f"OpanonBot_{STAGE}_"
 
 # Admin auth token injected from env vars - not using AWS SSM because $$
 ADMIN_AUTH_TOKEN = os.environ["ADMIN_AUTH_TOKEN"]
