@@ -84,7 +84,7 @@ class Messages(en.Messages):
     )
 
     no_self_messaging = "نمیشه به خودت پیام بفرستی! اونطوری خیلی ناشناس نمی‌مونی."
-    new_anonymous_chat = "چت ناشناس حدید!"
+    new_anonymous_chat = "چت ناشناس جدید!"
 
     block_confirmation = "مطمئنی می‌خوای بلاک کنی؟ دیگه هیچ پیامی ازش نمی‌گیری!"
     user_blocked = "بلاک شد! تمام!"

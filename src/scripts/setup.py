@@ -18,6 +18,7 @@ def setup_bot():
     class CommandsEn:
         command_start = "See how everything works"
         command_help = "Tips and help for using the bot"
+        command_feature = "Make feature requests"
         command_my_link = "Get your chat link for receiving anonymous messages"
         command_new_link = "Delete your old chat link and create a new one"
         command_delete_link = "Delete your chat link and don't create a new one"
@@ -26,6 +27,7 @@ def setup_bot():
     class CommandsFa:
         command_start = "شروع و دیدن دستورها"
         command_help = "کمک در استفاده از ربات"
+        command_feature = "درخواست امکانات بیشتر برای ربات"
         command_my_link = "دریافت پیام ناشناس"
         command_new_link = "دریافت لینک ناشناس جدید"
         command_delete_link = "حذف لینک ناشناس"
@@ -41,6 +43,7 @@ def setup_bot():
             BotCommand("my_link", vocab.command_my_link),
             BotCommand("delete_link", vocab.command_delete_link),
             BotCommand("new_link", vocab.command_new_link),
+            BotCommand("feature", vocab.command_feature),
             BotCommand("cancel", vocab.command_cancel),
         ]
 
