@@ -1,0 +1,19 @@
+.idea
+.vscode
+.python-version
+.terraform*
+__pycache__
+
+# Chalice
+src/.chalice/deployments/
+src/.chalice/deployed/
+src/.chalice/venv/
+
+# Env vars
+src/.env*
+
+# Deployment
+chalice_config.json.back
+
+# Pytest
+.pytest_cache

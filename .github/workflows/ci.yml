@@ -1,0 +1,92 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ "main" ]
+    paths-ignore: [ "docs/**" ]
+
+  push:
+    branches: [ "main" ]
+    paths-ignore: [ "docs/**" ]
+
+permissions:
+  id-token: write   # This is required for requesting the JWT
+  contents: read    # This is required for actions/checkout
+
+concurrency:
+  group: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && github.event_name }}
+
+jobs:
+  linter:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+          cache: "pip"
+
+      - run: pip install -r src/requirements.txt
+
+      - name: Run pre-commit
+        uses: pre-commit/action@v3.0.0
+
+  pytest:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+
+      - name: Prepare env vars
+        run: echo '${{ secrets.ENV_LOCAL }}' | base64 -d > src/.env.local
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+          cache: "pip"
+
+      - run: pip install -r src/requirements.txt
+
+      - name: Run tests
+        run: make test
+
+  deploy:
+    name: Deploy
+    concurrency: "deploy-step"  # Only one deploy job at any time
+    runs-on: ubuntu-latest
+    needs: [ linter, pytest ]
+    if: ${{ !contains(github.event.head_commit.message, '#skip-deploy') && github.ref == 'refs/heads/main' }}
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v4
+
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          role-to-assume: arn:aws:iam::256842052552:role/chalice-project-deploy
+          aws-region: ap-southeast-2
+
+      - name: Prepare env vars
+        run: >
+          echo '${{ secrets.ENV_PROD }}' | base64 -d > src/.env.prod &&
+          echo '${{ secrets.ENV_LOCAL }}' | base64 -d > src/.env.local
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+          cache: "pip"
+
+      - run: pip install -r src/requirements.txt
+
+      - name: Deploy
+        run: make deploy
+
+      - name: Cleanup
+        # Run even if deploy failed
+        if: ${{ ! cancelled() }}
+        run: rm src/.env*

@@ -1,0 +1,29 @@
+{
+  "version": "2.0",
+  "app_name": "OpanonBot",
+  "environment_variables": {
+    "THE_AWS_REGION": "ap-southeast-2"
+  },
+  "stages": {
+    "local": {
+      "environment_variables": {
+        "STAGE": "local",
+        "STAGE_VERSION": "1"
+      }
+    },
+    "prod": {
+      "api_gateway_stage": "p1",
+      "automatic_layer": true,
+      "autogen_policy": false,
+      "api_gateway_custom_domain": {
+        "domain_name": "tgbots.toosi.tech",
+        "certificate_arn": "arn:aws:acm:us-east-1:256842052552:certificate/83d5728d-0314-4bdd-98fa-4ea9f4922d8a",
+        "url_prefix": "opanonbot"
+      },
+      "environment_variables": {
+        "STAGE": "prod",
+        "STAGE_VERSION": "1"
+      }
+    }
+  }
+}
