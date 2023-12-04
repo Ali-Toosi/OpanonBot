@@ -6,8 +6,9 @@ deploy:
     fi
 	@cp src/.chalice/config.json chalice_config.json.back
 	@python src/scripts/inject_env_vars.py
-# 	@./src/scripts/sync_deploy_files.sh download
-# 	@[ -e "src/.chalice/deployed/prod.json" ] || { echo "Deploy file not found! Sync must have failed."; exit 1; }
+	@./src/scripts/sync_deploy_files.sh download
+	@[ -e "src/.chalice/deployed/prod.json" ] || { echo "Deploy file not found! Sync must have failed."; exit 1; }
+	@python src/scripts/manage.py prod setup
 	@cd src && chalice deploy --stage prod
 	@./src/scripts/sync_deploy_files.sh upload
 	@cp -f chalice_config.json.back src/.chalice/config.json && rm chalice_config.json.back
