@@ -79,7 +79,3 @@ def create_new_anonymous_code(chat_id) -> ChatCodeSerializer:
     chat_code = ChatCodeDR(code, chat_id=chat_id)
     chat_code.save()
     return ChatCodeSerializer.from_record(chat_code)
-
-
-def find_random_receiver():
-    pass

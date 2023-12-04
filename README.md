@@ -3,6 +3,7 @@
 For receiving anonymous messages in Telegram.
 
 English: https://t.me/OpanonBot
+
 Farsi: https://t.me/NashenasBot
 
 ## Development
@@ -11,7 +12,7 @@ Farsi: https://t.me/NashenasBot
 
 You will just need to set the env variables in `src/.env.local` (need to create the file) and run `make local`,
 then set your test bot's webhook accordingly.
-Checkout [docs/env_vars.md](env_vars page) for more info.
+Checkout [env_vars page](docs/env_vars.md) for more info.
 
 When you stop, you need to run `make stoplocal` so serveo will actually stop in the background.
 
