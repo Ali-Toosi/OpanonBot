@@ -29,7 +29,7 @@ class Messages:
         "*How do I unblock someone?*\n"
         "You can't. Once they are blocked, they are blocked forever."
         "\n\n"
-        "*How do I make feature requests?*"
+        "*How do I make feature requests?*\n"
         "By clicking on /feature. Or if you're a programmer and willing to contribute, the Github repo link is above.\n"
     )
 
