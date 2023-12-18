@@ -24,7 +24,7 @@ jobs:
       - name: Checkout Code Repository
         uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
           cache: "pip"
@@ -45,7 +45,7 @@ jobs:
       - name: Prepare env vars
         run: echo '${{ secrets.ENV_LOCAL }}' | base64 -d > src/.env.local
 
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
           cache: "pip"
@@ -76,7 +76,7 @@ jobs:
           echo '${{ secrets.ENV_PROD }}' | base64 -d > src/.env.prod &&
           echo '${{ secrets.ENV_LOCAL }}' | base64 -d > src/.env.local
 
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
           cache: "pip"
