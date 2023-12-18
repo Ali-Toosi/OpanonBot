@@ -24,12 +24,12 @@ class Messages:
         "\n\n"
         "*Can you see the messages I send?*\n"
         "No, everything is anonymous... and open source. Confirm for yourself (and contribute!): "
-        "[source code](https://github.com/Ali-Toosi/eastern-bots/tree/main/eastern_bots/opanonbot)"
+        "[source code](https://github.com/Ali-Toosi/OpanonBot)"
         "\n\n"
         "*How do I unblock someone?*\n"
         "You can't. Once they are blocked, they are blocked forever."
         "\n\n"
-        "*How do I make feature requests?*"
+        "*How do I make feature requests?*\n"
         "By clicking on /feature. Or if you're a programmer and willing to contribute, the Github repo link is above.\n"
     )
 

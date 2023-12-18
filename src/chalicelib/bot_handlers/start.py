@@ -16,7 +16,7 @@ def start(message: Message, data):
 def tips(message: Message, data):
     vocab: Messages = data["messages"]
     set_user_state(message, None)
-    bot.reply_to(message, vocab.help_message)
+    bot.reply_to(message, vocab.help_message, disable_web_page_preview=True)
 
 
 @bot.message_handler(commands=["cancel"])
