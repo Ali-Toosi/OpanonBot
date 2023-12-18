@@ -54,5 +54,7 @@ def explained(message: Message, data):
         message, vocab.thank_you, reply_markup=ReplyKeyboardRemove(selective=True)
     )
     bot.send_message(
-        app_config.ADMIN_TG_ID, f"*Feature request*\n\n{feature}\n\n{explanation}"
+        app_config.ADMIN_TG_ID,
+        f"*Feature request*\n\n{feature}\n\n{explanation}",
+        parse_mode="",
     )
