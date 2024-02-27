@@ -1,6 +1,6 @@
 chalice==1.29.0
 pynamodb==5.5.1
 pytest==7.4.3
-sentry-sdk[chalice]==1.39.1
+sentry-sdk[chalice]==1.40.6
 pydantic==2.5.2
 pyTelegramBotAPI==4.14.0
