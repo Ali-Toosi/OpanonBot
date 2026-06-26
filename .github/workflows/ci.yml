@@ -22,7 +22,7 @@ jobs:
     steps:
 
       - name: Checkout Code Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - uses: actions/setup-python@v5
         with:
@@ -40,7 +40,7 @@ jobs:
     steps:
 
       - name: Checkout Code Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Prepare env vars
         run: echo '${{ secrets.ENV_LOCAL }}' | base64 -d > src/.env.local
@@ -63,7 +63,7 @@ jobs:
     if: ${{ !contains(github.event.head_commit.message, '#skip-deploy') && github.ref == 'refs/heads/main' }}
     steps:
       - name: Git clone the repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v4
